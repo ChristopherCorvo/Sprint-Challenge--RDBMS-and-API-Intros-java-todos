@@ -37,11 +37,13 @@ public class Todos extends Auditable
     // Constructor with parameters
 
 
-    public Todos(User user,
-                 String description)
+    public Todos(
+        User user,
+        String description)
     {
-        this.description = description;
         this.user = user;
+        this.description = description;
+
     }
 
     // ----------- Getters and Setters --------------
@@ -76,6 +78,7 @@ public class Todos extends Auditable
         this.completed = completed;
     }
 
+    // ----- Association Getter and Setter
     public User getUser()
     {
         return user;

@@ -1,5 +1,6 @@
 package com.lambdaschool.todos.services;
 
+import com.lambdaschool.todos.models.Todos;
 import com.lambdaschool.todos.models.User;
 import com.lambdaschool.todos.repository.UserRepository;
 import com.lambdaschool.todos.views.UserNameCountTodos;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService
      * Connects this service to the auditing service in order to get current user name
      */
     @Autowired
-    private UserAuditing userAuditing;
+    private TodosService todosService;
 
     public User findUserById(long id) throws EntityNotFoundException
     {
@@ -70,6 +71,16 @@ public class UserServiceImpl implements UserService
         newUser.setPassword(user.getPassword());
         newUser.setPrimaryemail(user.getPrimaryemail()
             .toLowerCase());
+
+        // add todos to given user
+        newUser.getTodos().clear();
+        for (Todos td : user.getTodos())
+        {
+            Todos newToDo = new Todos();
+            newToDo.setDescription(td.getDescription());
+            newToDo.setUser(newUser);
+            newUser.getTodos().add(newToDo);
+        }
 
         return userrepos.save(newUser);
     }
