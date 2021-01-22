@@ -29,8 +29,6 @@ public class TodosController
      */
     @PatchMapping(value = "/todo/{todoid}")
     public ResponseEntity<?> markCompleted(
-        @RequestBody
-            Todos updateTodo,
         @PathVariable
             long todoid)
     {
