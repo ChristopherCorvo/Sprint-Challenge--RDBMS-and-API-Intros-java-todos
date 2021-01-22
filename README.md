@@ -1748,9 +1748,28 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Can you explain your data model, data schema to me?
-2. Can you explain how you connected your API to a database?
+
+    For this project we will have two main tables. 1) a todos table and 2) a user table. One User can have many todos and many
+    indiviudal todos can be affiliate or associated to one user. 
+    
+    In addition to these two main tables that organize the majority of the data there is an additonal 'Auditable' table. This table provides us the ability to audit our field entries for both the User and Todos tables. 
+
+2. Can you explain how you connected your API to a database? 
+
+    For this project we are connecting our API to a database via H2 and JPA. When we initialized this project we added 4
+    dependencies, two of which were the H2 database and the JPA. The H2 database is a relational database management system. H2
+    creates a database that is stored locally. H2 is classified as a "disk-based" or "in-memory" database. We will use H2 for development and will change if or when this project was deployed globally. 
+
+    H2 works in conjunction with the JPA(Java Persistence API). The JPA allows a developer to map, store, update, and retrieve data from a relational database.
+
 3. Can you explain the flow of data from client through the backend system and back to the client?
+
+    When the Front End hits an endpoint the request will first trigger the given controller. The controller class is where all
+    possible endpoints you've constructed are first defined. From the controller the data passes through a service layer. The service layer consists of a serviceimpl class that implements a service interface. This service layer acts as a shield or barrier to the repository class. The repository class has the power and tools to actually communicate with your models/tables reading or changing the data that is stored there. 
+
 4. How did you handle querying in your application: custom querying vs JPA Querying?
+
+    For this project I did not create any custom queries. All of my todo quries were provided from the CrudRepository. In the UserRepository however there is one custom SQL query provided by the teacher. 
 
 ## Instructions
 
