@@ -1,21 +1,25 @@
 package com.lambdaschool.todos;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * Starting class for testing
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+// @EnableJpaAuditing
+@SpringBootApplication
 public class TodosApplicationTests
 {
 
-    @Test
-    public void contextLoads()
+    /**
+     * Main method to start the application.
+     *
+     * @param args Not used in this application.
+     */
+    public static void main(String[] args)
     {
+        SpringApplication.run(TodosApplication.class,
+            args);
     }
-
 }
